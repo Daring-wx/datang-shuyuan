@@ -1,11 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar.vue';
+import BookBackground from '../components/BookBackground.vue';
 ---
 
 <BaseLayout title="首页">
+  <NavBar client:load />
+  <BookBackground client:load />
   <main class="home">
-    <h1 class="home__title">个人博客</h1>
-    <p class="home__subtitle">建设中...</p>
+    <div class="home__content">
+      <p class="home__label">Personal Blog</p>
+      <h1 class="home__title">你的名字</h1>
+      <p class="home__subtitle">Code · Design · Life</p>
+      <div class="home__divider">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
   </main>
 </BaseLayout>
 
@@ -13,20 +25,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .home {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
+
+  .home__content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  .home__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
   .home__title {
     font-size: 42px;
     font-weight: 300;
     letter-spacing: 4px;
-    color: #2c2c2c;
+    color: var(--text-primary);
     margin-bottom: 16px;
   }
+
   .home__subtitle {
+    font-family: var(--font-sans);
     font-size: 13px;
-    color: #888;
     letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+
+  .home__divider {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .home__divider span {
+    width: 24px;
+    height: 1px;
+    background: var(--text-secondary);
+    opacity: 0.3;
   }
 </style>
