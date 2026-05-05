@@ -3,5 +3,8 @@ import vue from '@astrojs/vue'
 import mdx from '@astrojs/mdx'
 
 export default defineConfig({
-  integrations: [vue(), mdx()]
+  integrations: [vue(), mdx()],
+  devToolbar: {
+    enabled: false
+  }
 })

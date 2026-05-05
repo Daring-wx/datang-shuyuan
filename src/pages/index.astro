@@ -2,17 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NavBar from '../components/NavBar.vue';
 import BookBackground from '../components/BookBackground.vue';
+import ScrollingPoetry from '../components/ScrollingPoetry.vue';
+import WeatherEffect from '../components/WeatherEffect.vue';
 ---
 
 <BaseLayout title="首页">
   <NavBar client:load />
   <BookBackground client:load />
+  <ScrollingPoetry client:load />
+  <WeatherEffect client:load />
   <main class="home">
     <div class="home__content">
-      <p class="home__label">Personal Blog</p>
-      <h1 class="home__title">你的名字</h1>
-      <p class="home__subtitle">Code · Design · Life</p>
-      <div class="home__divider">
+      <p class="home__label anim-fade-up" style="animation-delay: 0.3s">Personal Blog</p>
+      <h1 class="home__title anim-fade-up" style="animation-delay: 0.6s">大唐书院</h1>
+      <p class="home__subtitle anim-fade-up" style="animation-delay: 0.9s">Code · Design · Life</p>
+      <div class="home__divider anim-fade-up" style="animation-delay: 1.2s">
         <span></span>
         <span></span>
         <span></span>
@@ -41,14 +45,16 @@ import BookBackground from '../components/BookBackground.vue';
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    opacity: 0.8;
     margin-bottom: 20px;
   }
 
   .home__title {
-    font-size: 42px;
-    font-weight: 300;
-    letter-spacing: 4px;
+    font-family: 'KaiTi', 'STKaiti', '楷体', 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 8px;
     color: var(--text-primary);
     margin-bottom: 16px;
   }
@@ -57,7 +63,8 @@ import BookBackground from '../components/BookBackground.vue';
     font-family: var(--font-sans);
     font-size: 13px;
     letter-spacing: 2px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    opacity: 0.8;
     margin-bottom: 32px;
   }
 
@@ -72,5 +79,19 @@ import BookBackground from '../components/BookBackground.vue';
     height: 1px;
     background: var(--text-secondary);
     opacity: 0.3;
+  }
+
+  /* ========== 入场动画 ========== */
+  .anim-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
