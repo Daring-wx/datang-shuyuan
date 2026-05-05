@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: 2026-05-01
+date: "2026-05-01"
 tag: 随笔
 excerpt: 这是我的第一篇博客文章，记录开始写作的这一刻。
 readingTime: 3 分钟

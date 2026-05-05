@@ -22,7 +22,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const currentPath = ref(window.location.pathname)
+const currentPath = ref('/')
 const menuOpen = ref(false)
 const isHidden = ref(false)
 let lastScroll = 0
@@ -36,7 +36,10 @@ const handleScroll = () => {
   lastScroll = currentScroll
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
+onMounted(() => {
+  currentPath.value = window.location.pathname
+  window.addEventListener('scroll', handleScroll)
+})
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 

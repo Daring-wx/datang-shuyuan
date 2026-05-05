@@ -1,6 +1,6 @@
 ---
 title: Vue 3 实用技巧
-date: 2026-04-28
+date: "2026-04-28"
 tag: 技术
 excerpt: 整理一些 Vue 3 开发中的实用技巧和最佳实践。
 readingTime: 5 分钟
