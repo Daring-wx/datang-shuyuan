@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar.vue';
+import WorkCard from '../components/WorkCard.astro';
+
+const works = [
+  {
+    title: '个人博客',
+    description: '这个极简文艺风格的博客，使用 Astro + Vue 构建',
+    tags: ['Astro', 'Vue', 'CSS'],
+    cover: 'linear-gradient(135deg, #e8e6e3, #d4d4d4)',
+    demo: '#',
+    github: '#'
+  },
+  {
+    title: '天气应用',
+    description: '简洁的天气查询应用，支持城市搜索和未来预报',
+    tags: ['JavaScript', 'API'],
+    cover: 'linear-gradient(135deg, #d4d4e8, #c4c4d8)',
+    demo: '#',
+    github: '#'
+  },
+  {
+    title: '待办清单',
+    description: '极简风格的待办事项管理工具',
+    tags: ['Vue', 'LocalStorage'],
+    cover: 'linear-gradient(135deg, #e3e8e6, #d4d8d4)',
+    github: '#'
+  },
+  {
+    title: 'Markdown 编辑器',
+    description: '支持实时预览的在线 Markdown 编辑器',
+    tags: ['Vue', 'Marked'],
+    cover: 'linear-gradient(135deg, #e6e3e8, #d8d4d8)',
+    demo: '#'
+  }
+];
+---
+
+<BaseLayout title="作品">
+  <NavBar client:load />
+  <main class="works">
+    <div class="works__container">
+      <h1 class="page-title">作品</h1>
+      <div class="works__grid">
+        {works.map(work => (
+          <WorkCard {...work} />
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .works {
+    padding: 120px 20px 80px;
+  }
+
+  .works__container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .works__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .works__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
