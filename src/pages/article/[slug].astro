@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavBar from '../../components/NavBar.vue';
+import { getCollection } from 'astro:content';
+import '../../assets/styles/markdown.css';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+
+const articles = await getCollection('articles');
+const sorted = articles.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const currentIndex = sorted.findIndex(a => a.slug === article.slug);
+const prevArticle = currentIndex > 0 ? sorted[currentIndex - 1] : null;
+const nextArticle = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+---
+
+<BaseLayout title={article.data.title}>
+  <NavBar client:load />
+  <main class="article-detail">
+    <div class="article-detail__container">
+      <div class="article-detail__meta">
+        <span>{article.data.date}</span>
+        <span class="dot">·</span>
+        <span>{article.data.tag}</span>
+        <span class="dot">·</span>
+        <span>{article.data.readingTime}</span>
+      </div>
+      <h1 class="article-detail__title">{article.data.title}</h1>
+      <div class="article-detail__content markdown-body">
+        <Content />
+      </div>
+      <div class="article-detail__nav">
+        {prevArticle && (
+          <a href={`/article/${prevArticle.slug}`} class="nav-link">
+            ← {prevArticle.data.title}
+          </a>
+        )}
+        {nextArticle && (
+          <a href={`/article/${nextArticle.slug}`} class="nav-link">
+            {nextArticle.data.title} →
+          </a>
+        )}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-detail {
+    padding: 120px 20px 80px;
+  }
+
+  .article-detail__container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .article-detail__meta {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot { opacity: 0.4; }
+
+  .article-detail__title {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+  }
+
+  .article-detail__nav {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+</style>
