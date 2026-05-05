@@ -1,0 +1,109 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  cover?: string;
+  demo?: string;
+  github?: string;
+}
+
+const { title, description, tags, cover, demo, github } = Astro.props;
+---
+
+<div class="work-card">
+  <div class="work-card__cover" style={cover ? `background: ${cover}` : ''}>
+    <span class="work-card__placeholder">{title.charAt(0)}</span>
+  </div>
+  <div class="work-card__body">
+    <h3 class="work-card__title">{title}</h3>
+    <p class="work-card__desc">{description}</p>
+    <div class="work-card__tags">
+      {tags.map(tag => (
+        <span class="work-card__tag">{tag}</span>
+      ))}
+    </div>
+    <div class="work-card__links">
+      {demo && <a href={demo} target="_blank" class="work-card__link">在线预览</a>}
+      {github && <a href={github} target="_blank" class="work-card__link">GitHub</a>}
+    </div>
+  </div>
+</div>
+
+<style>
+  .work-card {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .work-card__cover {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.06));
+  }
+
+  .work-card__placeholder {
+    font-size: 32px;
+    color: var(--text-secondary);
+    opacity: 0.3;
+  }
+
+  .work-card__body {
+    padding: 20px;
+  }
+
+  .work-card__title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .work-card__desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .work-card__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .work-card__tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-secondary);
+  }
+
+  .work-card__links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .work-card__link {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .work-card__link:hover {
+    color: var(--text-primary);
+  }
+</style>
