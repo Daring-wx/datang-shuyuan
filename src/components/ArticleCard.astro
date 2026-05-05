@@ -11,7 +11,7 @@ interface Props {
 const { slug, title, date, tag, excerpt, readingTime } = Astro.props;
 ---
 
-<a href={`/datang-shuyuan/article/${slug}/`} class="article-card">
+<a href={`/datang-shuyuan/article/${slug}`} class="article-card">
   <div class="article-card__meta">
     <span class="article-card__date">{date}</span>
     <span class="article-card__dot">·</span>

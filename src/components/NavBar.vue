@@ -1,20 +1,20 @@
 <template>
   <nav class="navbar" :class="{ 'navbar--hidden': isHidden }">
     <div class="navbar__links">
-      <a href="/datang-shuyuan/" class="navbar__link" :class="{ active: currentPath === '/datang-shuyuan/' || currentPath === '/datang-shuyuan' }">首页</a>
-      <a href="/datang-shuyuan/articles/" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/articles') }">文章</a>
-      <a href="/datang-shuyuan/works/" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/works') }">作品</a>
-      <a href="/datang-shuyuan/about/" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/about') }">关于</a>
+      <a href="/datang-shuyuan" class="navbar__link" :class="{ active: currentPath === '/datang-shuyuan' || currentPath === '/datang-shuyuan/' }">首页</a>
+      <a href="/datang-shuyuan/articles" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/articles') }">文章</a>
+      <a href="/datang-shuyuan/works" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/works') }">作品</a>
+      <a href="/datang-shuyuan/about" class="navbar__link" :class="{ active: currentPath.startsWith('/datang-shuyuan/about') }">关于</a>
     </div>
     <button class="navbar__menu-btn" @click="toggleMenu" :class="{ open: menuOpen }">
       <span></span>
       <span></span>
     </button>
     <div class="navbar__mobile" :class="{ open: menuOpen }">
-      <a href="/datang-shuyuan/" @click="closeMenu">首页</a>
-      <a href="/datang-shuyuan/articles/" @click="closeMenu">文章</a>
-      <a href="/datang-shuyuan/works/" @click="closeMenu">作品</a>
-      <a href="/datang-shuyuan/about/" @click="closeMenu">关于</a>
+      <a href="/datang-shuyuan" @click="closeMenu">首页</a>
+      <a href="/datang-shuyuan/articles" @click="closeMenu">文章</a>
+      <a href="/datang-shuyuan/works" @click="closeMenu">作品</a>
+      <a href="/datang-shuyuan/about" @click="closeMenu">关于</a>
     </div>
   </nav>
 </template>

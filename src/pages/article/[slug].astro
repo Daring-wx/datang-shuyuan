@@ -39,12 +39,12 @@ const nextArticle = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] 
       </div>
       <div class="article-detail__nav">
         {prevArticle && (
-          <a href={`/datang-shuyuan/article/${prevArticle.slug}/`} class="nav-link">
+          <a href={`/datang-shuyuan/article/${prevArticle.slug}`} class="nav-link">
             ← {prevArticle.data.title}
           </a>
         )}
         {nextArticle && (
-          <a href={`/datang-shuyuan/article/${nextArticle.slug}/`} class="nav-link">
+          <a href={`/datang-shuyuan/article/${nextArticle.slug}`} class="nav-link">
             {nextArticle.data.title} →
           </a>
         )}
