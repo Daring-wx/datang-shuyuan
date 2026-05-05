@@ -90,9 +90,9 @@ const handleMouseMove = (e) => {
   mouseY.value = (e.clientY - centerY) / centerY
 }
 
-// 每10秒切换背景（配合书本翻页），3种主题循环
+// 每10秒切换背景（配合书本翻页），4种主题循环
 const cycleBg = () => {
-  bgTheme.value = (bgTheme.value + 1) % 3
+  bgTheme.value = (bgTheme.value + 1) % 4
 }
 
 onMounted(() => {
@@ -145,19 +145,24 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
   transition: background 2s ease-in-out;
 }
 
-/* 主题1：深灰黑（冷调） */
+/* 主题0：深灰黑（冷调） */
 .book-bg--theme0 {
   background: linear-gradient(135deg, #1a1a1e 0%, #1e1e24 50%, #1a1a20 100%);
 }
 
-/* 主题2：深蓝黑（夜空） */
+/* 主题1：深蓝黑（夜空） */
 .book-bg--theme1 {
   background: linear-gradient(135deg, #181a20 0%, #1a1e28 50%, #16181e 100%);
 }
 
-/* 主题3：深棕黑（暖调） */
+/* 主题2：深紫灰（暮色） */
 .book-bg--theme2 {
-  background: linear-gradient(135deg, #1c1a18 0%, #1e1c1a 50%, #1a1816 100%);
+  background: linear-gradient(135deg, #1c1a20 0%, #1e1c22 50%, #1a181e 100%);
+}
+
+/* 主题3：深青灰（山岚） */
+.book-bg--theme3 {
+  background: linear-gradient(135deg, #1a1e1e 0%, #1c2020 50%, #181c1c 100%);
 }
 
 /* 纸张纹理 */
@@ -192,7 +197,11 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
 }
 
 .book-bg--theme2 .glow--1 {
-  background: radial-gradient(circle, rgba(180, 150, 120, 0.5), transparent 70%);
+  background: radial-gradient(circle, rgba(160, 140, 180, 0.5), transparent 70%);
+}
+
+.book-bg--theme3 .glow--1 {
+  background: radial-gradient(circle, rgba(140, 170, 170, 0.5), transparent 70%);
 }
 
 .glow--2 {
@@ -209,7 +218,11 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
 }
 
 .book-bg--theme2 .glow--2 {
-  background: radial-gradient(circle, rgba(200, 160, 120, 0.4), transparent 70%);
+  background: radial-gradient(circle, rgba(180, 150, 200, 0.4), transparent 70%);
+}
+
+.book-bg--theme3 .glow--2 {
+  background: radial-gradient(circle, rgba(150, 180, 180, 0.4), transparent 70%);
 }
 
 @keyframes glowPulse {
@@ -236,7 +249,11 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
 }
 
 .book-bg--theme2 .particle {
-  background: rgba(200, 170, 140, 0.3);
+  background: rgba(180, 160, 200, 0.3);
+}
+
+.book-bg--theme3 .particle {
+  background: rgba(160, 190, 190, 0.3);
 }
 
 @keyframes particleFloat {
@@ -288,7 +305,11 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
 }
 
 .book-bg--theme2 .page {
-  background: linear-gradient(145deg, #e8e4e0 0%, #e0dcd8 50%, #d8d4d0 100%);
+  background: linear-gradient(145deg, #e4e0e8 0%, #dcd8e2 50%, #d4d0dc 100%);
+}
+
+.book-bg--theme3 .page {
+  background: linear-gradient(145deg, #e0e4e4 0%, #d8dede 50%, #d0d8d8 100%);
 }
 
 .page__texture {
@@ -412,7 +433,11 @@ const textFragments = Array.from({ length: 12 }, (_, i) => {
 }
 
 .book-bg--theme2 .text-fragment {
-  color: rgba(200, 170, 140, 0.15);
+  color: rgba(180, 160, 200, 0.15);
+}
+
+.book-bg--theme3 .text-fragment {
+  color: rgba(160, 190, 190, 0.15);
 }
 
 @keyframes textFloat {
