@@ -1,18 +1,50 @@
-*, *::before, *::after {
+:root {
+  --bg: #ececf2;
+  --text-primary: #2c2c2c;
+  --text-body: #555555;
+  --text-secondary: #888888;
+  --border: rgba(0, 0, 0, 0.06);
+  --hover: rgba(0, 0, 0, 0.04);
+  --font-serif: Georgia, 'Noto Serif SC', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Noto Serif SC', serif;
-  background-color: #f8f6f3;
-  color: #2c2c2c;
+  font-family: var(--font-serif);
+  background-color: var(--bg);
+  color: var(--text-body);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
 }
